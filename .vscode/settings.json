@@ -1,0 +1,31 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "shukriserversql.mysql.database.azure.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "shukrisconnection",
+            "username": "shukri@shukriserversql",
+            "database": "shukrisdb",
+            "password": "Password1234/"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "shukriserversql.mysql.database.azure.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "shukrisconnection",
+            "username": "shukri@shukriserversql",
+            "database": "shukrisdb",
+            "password": "Password1234/",
+            "connectString": "cnx = mysql.connector.connect(user=\"shukri@shukriserversql\", password={your_password}, host=\"shukriserversql.mysql.database.azure.com\", port=3306, database={your_database}, ssl_ca={ca-cert filename}, ssl_verify_cert=true)"
+        }
+    ]
+}
