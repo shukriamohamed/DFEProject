@@ -72,6 +72,7 @@ class SignUpForm(FlaskForm):
     last_name = StringField('Last Name:')
     pet_name = StringField('Pet Name:')
     email = StringField('Email:')
+    phone_number = StringField('Phone Number:')
     type = StringField ('Please Enter Pet Type/Breed:')
     submit = SubmitField('Sign Up')
 
