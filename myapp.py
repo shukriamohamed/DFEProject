@@ -1,3 +1,4 @@
+#!/bin/python3#!/bin/python3
 from flask import Flask, render_template, request, redirect, url_for, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
