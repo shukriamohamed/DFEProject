@@ -2,11 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from flask_sqlalchemy import SQLAlchemy
+import os 
 
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY']= "My super secret key"
+
 #app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://{username}:{password}@{server}/testdb".format('shukri', 'Password1234/', 'myservershukri1.database.windows.net')
 
 
@@ -26,15 +28,16 @@ class Owner(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     forename = db.Column(db.String(20))
     surname = db.Column(db.String(20))
-    pet = db.relationship('Pet',backref ='all_pet')
+    pet = db.relationship('Pet',backref ='all_pets')
 
-class pet(db.Model):
+class Pet(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(20))
     type = db.Column(db.String(20))
-    owner_id = db.Column(db.Integer,db.ForeignKey('own_id)'))
+    owner = db.Column(db.ForeignKey('own.id)'))
 
 '''
+
 db.create_all()
 o1 = Owner(id=1, forename='John', surname='Martin' )
 o2 = Owner(id=2, forename='Lucy', surname='Johnson' )
@@ -44,14 +47,14 @@ db.session.add(o1)
 db.session.add(o2)
 db.session.add(o3)
 db.session.add(o4)
-db.session.commit()
-p1 = Owner(id=1, name='Doggie', type='Dog', owner_id=1)
-p3 = Owner(id=3, name='Olive',  type='Rabbit', owner_id=1)
-p2 = Owner(id=2, name='Bella', type='Hamster' , owner_id=2)
-p4 = Owner(id=4, name='Max',  type='Cat', owner_id=2)
-p5 = Owner(id=5, name='Cooper', type='Dog', owner_id=3)
-p6 = Owner(id=6, name='Daisy', type='Snake', owner_id=4)
-p7 = Owner(id=7, name='Luna', type='Cat', owner_id=4)
+db.session.commit() 
+p1 = Pet(id=1, name='Doggie', type='Dog', owner_id=1)
+p3 = Pet(id=3, name='Olive',  type='Rabbit', owner_id=1)
+p2 = Pet(id=2, name='Bella', type='Hamster' , owner_id=2)
+p4 = Pet(id=4, name='Max',  type='Cat', owner_id=2)
+p5 = Pet(id=5, name='Cooper', type='Dog', owner_id=3)
+p6 = Pet(id=6, name='Daisy', type='Snake', owner_id=4)
+p7 = Pet(id=7, name='Luna', type='Cat', owner_id=4)
 db.session.add(p1)
 db.session.add(p2)
 db.session.add(p3)
@@ -60,21 +63,24 @@ db.session.add(p5)
 db.session.add(p6)
 db.session.add(p7)
 db.session.commit()
-
 '''
 
+
 class SignUpForm(FlaskForm):
-    first_name = StringField('First Name')
-    last_name = StringField('Last Name')
-    email = StringField('Email')
-    location = StringField ('Enter Chosen Location')
+    first_name = StringField('First Name:')
+    last_name = StringField('Last Name:')
+    pet_name = StringField('Pet Name:')
+    email = StringField('Email:')
+    type = StringField ('Please Enter Pet Type/Breed:')
     submit = SubmitField('Sign Up')
 
+    
 
 
 @app.route('/')
 def home():
-    return "Hello World!"
+    return render_template('home.html')
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -83,6 +89,7 @@ def signup():
         result = request.form
         return render_template('user.html',result=result)
     return render_template('signup.html',form=form)
+
 
 if __name__ == '__main__': 
     app.run(host="0.0.0.0", port=5000, debug=True) 

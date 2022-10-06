@@ -15,18 +15,21 @@
 
 <h6> Your Details</h6>
     <p>
+        {{form.id.label}} <br/>
+        {{form.id(size=30)}}
+    <p>
+        {{form.pet_name.label}} <br/>
+        {{form.pet_name(size=30)}}
 
-        {{form.first_name.label}} <br/>
-        {{form.first_name(size=30)}}
-    <p>
-        {{form.last_name.label}} <br/>
-        {{form.last_name(size=30)}}
-    </p>  
-    <p>
-        {{form.email.label}} <br/>
-        {{form.email(size=30)}} 
+
+    </p> 
+        {{form.type.label}} <br/>
+        {{form.type(size=30)}}   
     </p>
-
+    </p> 
+        {{form.own_id.label}} <br/>
+        {{form.own_id(size=30)}}   
+    </p>        
     <p>
         {{form.submit()}} <br/>
    

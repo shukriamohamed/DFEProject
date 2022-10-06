@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="text-center">
+    <h1> 
+        Welcome to Vet & Go!
+     <br/>
+     <br/>
+        <p class="text-center" style="color: black; font-size: medium">  We are a dedicated team that's here to take care of your veterinary needs.</p>
+        <p class="text-center" style="color: black; font-size: medium">Your pet's welfare is our number one priority. We provide the highest quality of care at this practice.</p>
+    
+    </h1>
+    <img src="{{url_for('static', filename='images/vet.png')}}" class="rounded mx-auto d-block" alt="..." width=500>
+
+    <br/><br/>
+    <p id="demo"> This is stuff</p>
+
+<script src="{{ url_for('static', filename='js/myfile.js') }}"></script>
+
+  </div>
+
+
+
+
+{% endblock %} 
